@@ -16,14 +16,12 @@ pipeline {
         stage('Upload War To Nexus'){
             steps{
                 script{
-
-                    def mavenPom = readMavenPom file: 'pom.xml'
-                    def nexusRepoName = 3.0.0.endsWith("SNAPSHOT") ? "simpleapp-snapshot" : "simpleapp-release"
+                    
                     nexusArtifactUploader artifacts: [
                         [
                             artifactId: 'simple-app', 
                             classifier: '', 
-                            file: "target/simpleapp-3.0.0.war", 
+                            file: "target/simple-app-3.0.0.war", 
                             type: 'war'
                         ]
                     ], 
